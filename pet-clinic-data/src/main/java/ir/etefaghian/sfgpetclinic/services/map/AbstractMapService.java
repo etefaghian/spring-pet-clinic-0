@@ -23,7 +23,7 @@ public  abstract class AbstractMapService<T,ID>{
         return  map.put(id,object );
     }
 
-    void deletebyId(ID id)
+    void deleteById(ID id)
     {
          map.remove(id);
     }
