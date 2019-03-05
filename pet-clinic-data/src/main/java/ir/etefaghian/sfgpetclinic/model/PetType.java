@@ -1,15 +1,26 @@
 package ir.etefaghian.sfgpetclinic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
+
+@Entity
+@Table(name= "types")
 public class PetType extends BaseEntity
     {
 
-    private String sname;
+    private String name;
 
-    public String getSname() {
-        return sname;
+
+    @OneToMany(mappedBy = "")
+    private List<Pet> pets;
+
+
+    public String getName() {
+        return name;
     }
-
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -1,12 +1,11 @@
 package ir.etefaghian.sfgpetclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import ir.etefaghian.sfgpetclinic.model.BaseEntity;
 
-public  abstract class AbstractMapService<T,ID>{
-    protected Map<ID,T> map = new HashMap<>();
+import java.util.*;
+
+public  abstract class AbstractMapService<T extends BaseEntity,ID extends Long>{
+    protected Map<Long,T> map = new HashMap<>();
 
     Set<T> findAll()
     {
@@ -18,8 +17,15 @@ public  abstract class AbstractMapService<T,ID>{
         return map.get(id);
     }
 
-    T save(ID id,T object)
+    T save(T object)
     {
+      if(object != null)
+      {
+          if(object.getId() == null){
+
+      }
+
+
         return  map.put(id,object );
     }
 
@@ -36,7 +42,10 @@ public  abstract class AbstractMapService<T,ID>{
     }
 
 
-
+private Long getNextId()
+{
+    return Collections.max(map.keySet())+1;
+}
 
 
 }
